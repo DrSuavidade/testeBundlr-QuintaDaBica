@@ -1,4 +1,9 @@
 import { Wine, Event } from "./types";
+import bicaVinhas2011 from "./src/images/bica_vinhas_2011.png";
+import bicaVinhas2016 from "./src/images/bica_vinhas_2016.png";
+import bicaJaen2011 from "./src/images/bica_jaen_2011.png";
+import bicaRose2019 from "./src/images/bica_2019.png";
+import brancoQbica2021 from "./src/images/qbica_2021.png";
 
 export const WINES: Wine[] = [
   {
@@ -18,7 +23,7 @@ export const WINES: Wine[] = [
     awards: ["Altamente Recomendado - Revista de Vinhos"],
     imageUrl:
       "https://images.unsplash.com/photo-1510850477530-ceb236b41f67?auto=format&fit=crop&q=80&w=1000",
-    bottleImageUrl: "src/images/Bica Vinhas Velhas 2011.png",
+    bottleImageUrl: bicaVinhas2011,
   },
   {
     id: "2",
@@ -37,7 +42,7 @@ export const WINES: Wine[] = [
     awards: ["94 pts - Robert Parker", "Grande Escolha"],
     imageUrl:
       "https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80&w=1000",
-    bottleImageUrl: "src/images/Bica Vinhas Velhas 2016.png",
+    bottleImageUrl: bicaVinhas2016,
   },
   {
     id: "3",
@@ -56,7 +61,7 @@ export const WINES: Wine[] = [
     awards: ["Medalha de Ouro - Vinhos de Portugal"],
     imageUrl:
       "https://images.unsplash.com/photo-1559158068-930d7b7eb841?auto=format&fit=crop&q=80&w=1000",
-    bottleImageUrl: "src/images/Bica Jaen 2011.png",
+    bottleImageUrl: bicaJaen2011,
   },
   {
     id: "4",
@@ -75,7 +80,7 @@ export const WINES: Wine[] = [
     awards: ["Boa Escolha - Revista de Vinhos"],
     imageUrl:
       "https://images.unsplash.com/photo-1594498653385-d5172c532c00?auto=format&fit=crop&q=80&w=1000",
-    bottleImageUrl: "src/images/Bica Rosé 2019.png",
+    bottleImageUrl: bicaRose2019,
   },
   {
     id: "5",
@@ -93,7 +98,7 @@ export const WINES: Wine[] = [
     awards: [],
     imageUrl:
       "https://images.unsplash.com/photo-1559158068-930d7b7eb841?auto=format&fit=crop&q=80&w=1000",
-    bottleImageUrl: "src/images/Branco QBica 2021.png",
+    bottleImageUrl: brancoQbica2021,
   },
 ];
 
