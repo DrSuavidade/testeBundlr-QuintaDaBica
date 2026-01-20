@@ -1,7 +1,7 @@
 import { Wine, Event } from "./types";
 import bicaVinhas2011 from "./src/images/bica_vinhas_2011.png";
 import bicaVinhas2016 from "./src/images/bica_vinhas_2016.png";
-import bicaJaen2011 from "./src/images/bica_jaen_2011.png";
+import bicaJaen2011 from "./src/images/bica_2011.png";
 import bicaRose2019 from "./src/images/bica_2019.png";
 import brancoQbica2021 from "./src/images/qbica_2021.png";
 
