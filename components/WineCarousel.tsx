@@ -9,17 +9,30 @@ interface WineCarouselProps {
 const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Constants for calculation to ensure images stay in sync
-  const ITEM_WIDTH_VW = 40; // The width of each bottle container in vw
-  const GAP_VW = 10; // The gap between bottles in vw
+  const ITEM_WIDTH_VW = isMobile ? 70 : 40; // Wider item on mobile to fill screen
+  const GAP_VW = isMobile ? 5 : 10; // Smaller gap on mobile
 
   // Each "step" in the scroll corresponds to moving one item + its gap
   const stepSize = ITEM_WIDTH_VW + GAP_VW;
   const totalTravel = (wines.length - 1) * stepSize;
 
-  // Total vertical height of the section to control scroll speed (e.g., 150vh per wine)
-  const totalScrollHeight = useMemo(() => wines.length * 150, [wines]);
+  // Total vertical height of the section to control scroll speed
+  // Reduce scroll distance on mobile for snappier feel
+  const scrollHeightPerWine = isMobile ? 100 : 150;
+  const totalScrollHeight = useMemo(
+    () => wines.length * scrollHeightPerWine,
+    [wines, scrollHeightPerWine],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +78,7 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
         {/* Background Decorative Word */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] overflow-hidden">
           <h2
-            className="text-[25vw] font-serif italic text-winery-cream whitespace-nowrap transition-transform duration-500 ease-out"
+            className="text-[40vw] lg:text-[25vw] font-serif italic text-winery-cream whitespace-nowrap transition-transform duration-500 ease-out"
             style={{ transform: `translateX(${(0.5 - scrollProgress) * 30}%)` }}
           >
             VINTAGE COLLECTION
@@ -73,29 +86,29 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 h-full flex items-center">
-          <div className="w-full flex flex-col lg:flex-row items-center gap-16">
+          <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
             {/* Left side: Info Panel (Synced to activeIndex) */}
-            <div className="lg:w-1/3 order-2 lg:order-1 h-[300px] flex flex-col justify-center relative z-20">
-              <div className="transition-all duration-500 transform">
+            <div className="lg:w-1/3 order-2 lg:order-1 w-full h-auto min-h-[220px] lg:h-[300px] flex flex-col justify-center relative z-20">
+              <div className="transition-all duration-500 transform text-center lg:text-left">
                 <div className="mb-4">
                   <span className="text-[10px] uppercase tracking-[0.3em] text-winery-gold">
                     Selected vintage
                   </span>
-                  <div className="overflow-hidden h-16 relative">
+                  <div className="overflow-hidden h-12 lg:h-16 relative">
                     {wines.map((wine, idx) => (
                       <h3
                         key={wine.id}
-                        className={`text-3xl sm:text-4xl font-serif italic text-winery-cream mt-2 absolute w-full transition-all duration-700 ${activeIndex === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+                        className={`text-2xl sm:text-4xl font-serif italic text-winery-cream mt-2 absolute w-full transition-all duration-700 ${activeIndex === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
                       >
                         {wine.name}
                       </h3>
                     ))}
                   </div>
-                  <div className="mt-4 min-h-[60px] relative overflow-hidden">
+                  <div className="mt-2 lg:mt-4 min-h-[40px] lg:min-h-[60px] relative overflow-hidden">
                     {wines.map((wine, idx) => (
                       <p
                         key={`desc-${wine.id}`}
-                        className={`text-winery-cream/60 leading-relaxed font-light text-sm italic absolute transition-all duration-700 ${activeIndex === idx ? "opacity-100" : "opacity-0"}`}
+                        className={`text-winery-cream/60 leading-relaxed font-light text-xs lg:text-sm italic absolute w-full transition-all duration-700 ${activeIndex === idx ? "opacity-100" : "opacity-0"}`}
                       >
                         {wine.tastingNotes}
                       </p>
@@ -103,7 +116,7 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
                   </div>
                 </div>
 
-                <div className="mt-8 space-y-4 max-w-xs">
+                <div className="mt-6 lg:mt-8 space-y-4 max-w-xs mx-auto lg:mx-0">
                   <div className="flex justify-between items-center border-b border-winery-cream/10 pb-2">
                     <span className="text-[9px] uppercase tracking-wider text-winery-cream/40">
                       Colheita
@@ -124,13 +137,13 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
 
                 <button
                   onClick={() => onSelect(wines[activeIndex])}
-                  className="mt-10 px-8 py-3 bg-winery-gold text-winery-dark text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-winery-cream transition-all duration-300 rounded-full"
+                  className="mt-8 lg:mt-10 px-8 py-3 bg-winery-gold text-winery-dark text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-winery-cream transition-all duration-300 rounded-full"
                 >
                   Descobrir Notas
                 </button>
 
                 {/* Vertical-aware Progress Bar */}
-                <div className="mt-12 flex items-center gap-4 max-w-xs">
+                <div className="mt-8 lg:mt-12 flex items-center gap-4 max-w-xs mx-auto lg:mx-0">
                   <span className="text-winery-gold font-serif italic text-lg">
                     0{activeIndex + 1}
                   </span>
@@ -148,11 +161,11 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
             </div>
 
             {/* Right side: Horizontal Slider Wrapper */}
-            <div className="lg:w-2/3 order-1 lg:order-2 h-[45vh] lg:h-[60vh] overflow-visible flex items-center relative">
+            <div className="lg:w-2/3 order-1 lg:order-2 h-[40vh] lg:h-[60vh] overflow-visible flex items-center relative w-full">
               <div
                 className="flex items-center transition-transform duration-300 ease-out"
                 style={{
-                  transform: `translateX(calc(-${currentTranslation}vw))`,
+                  transform: `translateX(calc(-${currentTranslation}vw + ${isMobile ? 15 : 0}vw))`, // Offset for mobile centering if needed
                 }}
               >
                 {wines.map((wine, idx) => (
@@ -165,15 +178,15 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
                       transform:
                         activeIndex === idx
                           ? "scale(1.15) rotate(0deg)"
-                          : "scale(0.7) rotate(-5deg)",
-                      opacity: activeIndex === idx ? 1 : 0.1,
-                      filter: activeIndex === idx ? "blur(0px)" : "blur(4px)",
+                          : "scale(0.8) rotate(-5deg)",
+                      opacity: activeIndex === idx ? 1 : 0.3,
+                      filter: activeIndex === idx ? "blur(0px)" : "blur(2px)",
                     }}
                   >
                     <img
                       src={wine.bottleImageUrl}
                       alt={wine.name}
-                      className="h-full max-h-[50vh] lg:max-h-[60vh] w-auto object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)]"
+                      className="h-full max-h-[35vh] lg:max-h-[60vh] w-auto object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,0.9)]"
                     />
                   </div>
                 ))}
@@ -183,11 +196,11 @@ const WineCarousel: React.FC<WineCarouselProps> = ({ wines, onSelect }) => {
         </div>
 
         {/* Cinematic Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-winery-gold/30">
+        <div className="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-winery-gold/30">
           <span className="text-[7px] uppercase tracking-[0.5em]">
             Deslizar
           </span>
-          <div className="w-px h-12 bg-gradient-to-b from-winery-gold to-transparent" />
+          <div className="w-px h-8 lg:h-12 bg-gradient-to-b from-winery-gold to-transparent" />
         </div>
       </div>
     </section>

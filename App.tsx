@@ -29,18 +29,18 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-winery-dark via-transparent to-winery-dark/40" />
       </div>
 
-      <div className="relative z-10 text-center px-6 animate-fade-in">
-        <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-6 block">
+      <div className="relative z-10 text-center px-4 md:px-6 animate-fade-in">
+        <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 md:mb-6 block">
           Desde o Século XVII • Dão
         </span>
-        <h1 className="text-6xl md:text-8xl font-serif italic text-winery-cream leading-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif italic text-winery-cream leading-tight">
           Quinta da Bica.
           <br />
           Tradição. Prestígio.
         </h1>
         <button
           onClick={() => setCurrentPage("vinhos")}
-          className="mt-12 px-10 py-4 border border-winery-gold text-winery-gold text-xs uppercase tracking-[0.3em] hover:bg-winery-gold hover:text-winery-dark transition-all duration-500 rounded-full"
+          className="mt-8 md:mt-12 px-8 md:px-10 py-3 md:py-4 border border-winery-gold text-winery-gold text-[10px] md:text-xs uppercase tracking-[0.3em] hover:bg-winery-gold hover:text-winery-dark transition-all duration-500 rounded-full"
         >
           Explorar a Coleção
         </button>
@@ -49,18 +49,18 @@ const App: React.FC = () => {
   );
 
   const HistoryPage = () => (
-    <div className="pt-48 pb-32 bg-winery-dark min-h-screen">
+    <div className="pt-28 md:pt-48 pb-20 md:pb-32 bg-winery-dark min-h-screen">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-4 lg:sticky lg:top-48">
               <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 block">
                 Herança
               </span>
-              <h1 className="text-5xl font-serif italic mb-8">
+              <h1 className="text-4xl md:text-5xl font-serif italic mb-6 md:mb-8">
                 Nossa História
               </h1>
-              <div className="h-px bg-winery-gold/20 w-32 mb-8" />
+              <div className="h-px bg-winery-gold/20 w-32 mb-6 md:mb-8" />
               <p className="text-xs uppercase tracking-widest text-winery-cream/40 leading-loose">
                 UM SÉCULO DE VITICULTURA ILUMINADA NA REGIÃO DO DÃO.
               </p>
@@ -149,17 +149,17 @@ const App: React.FC = () => {
   );
 
   const EventsPage = () => (
-    <div className="pt-48 pb-32 bg-winery-dark min-h-screen">
+    <div className="pt-28 md:pt-48 pb-20 md:pb-32 bg-winery-dark min-h-screen">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-24">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-6 block">
+          <div className="text-center mb-16 md:mb-24">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 md:mb-6 block">
               Espaços & Experiências
             </span>
-            <h1 className="text-6xl font-serif italic mb-8">
+            <h1 className="text-4xl md:text-6xl font-serif italic mb-6 md:mb-8">
               Eventos & Provas
             </h1>
-            <p className="text-winery-cream/60 max-w-2xl mx-auto leading-relaxed italic">
+            <p className="text-winery-cream/60 max-w-2xl mx-auto leading-relaxed italic text-sm md:text-base">
               Dispomos de vários espaços exteriores e interiores para a
               realização de variados tipos de eventos tais como casamentos,
               batizados, aniversários e provas vínicas.
@@ -263,7 +263,7 @@ const App: React.FC = () => {
           </section>
 
           {/* Wine Tastings */}
-          <section className="bg-winery-green p-12 lg:p-20 border border-winery-gold/10">
+          <section className="bg-winery-green p-8 md:p-12 lg:p-20 border border-winery-gold/10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.4em] text-winery-gold mb-6 block">
@@ -318,13 +318,13 @@ const App: React.FC = () => {
   );
 
   const GaleriaPage = () => (
-    <div className="pt-48 pb-32 bg-winery-dark min-h-screen">
+    <div className="pt-28 md:pt-48 pb-20 md:pb-32 bg-winery-dark min-h-screen">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-24">
-          <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-6 block">
+        <div className="text-center mb-16 md:mb-24">
+          <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 md:mb-6 block">
             Visual Journey
           </span>
-          <h1 className="text-6xl font-serif italic">Galeria</h1>
+          <h1 className="text-4xl md:text-6xl font-serif italic">Galeria</h1>
         </div>
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
           {[
@@ -352,14 +352,16 @@ const App: React.FC = () => {
   );
 
   const WhatToDoPage = () => (
-    <div className="pt-48 pb-32 bg-winery-dark min-h-screen">
+    <div className="pt-28 md:pt-48 pb-20 md:pb-32 bg-winery-dark min-h-screen">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-32">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-6 block">
+          <div className="text-center mb-16 md:mb-32">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 md:mb-6 block">
               Guia de Visita
             </span>
-            <h1 className="text-6xl font-serif italic mb-8">O Que Fazer</h1>
+            <h1 className="text-4xl md:text-6xl font-serif italic mb-6 md:mb-8">
+              O Que Fazer
+            </h1>
             <p className="text-winery-cream/40 italic">
               Descubra os sabores e segredos da nossa região.
             </p>
@@ -413,14 +415,14 @@ const App: React.FC = () => {
           </section>
 
           <section>
-            <div className="flex items-center gap-6 mb-16">
-              <h2 className="text-4xl font-serif italic text-winery-gold">
+            <div className="flex items-center gap-6 mb-10 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-serif italic text-winery-gold">
                 Locais de Interesse
               </h2>
               <div className="h-px bg-winery-gold/20 flex-grow" />
             </div>
-            <div className="space-y-20">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-12 md:space-y-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <div className="aspect-video bg-winery-green border border-winery-gold/10">
                   <img
                     src="https://static.wixstatic.com/media/11aecb_0a27f7db8a90425988e58a96d4acf1e4.jpg/v1/fill/w_404,h_192,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11aecb_0a27f7db8a90425988e58a96d4acf1e4.jpg"
@@ -428,10 +430,10 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-serif italic mb-6">
+                  <h3 className="text-2xl md:text-3xl font-serif italic mb-4 md:mb-6">
                     Museu Natural da Electricidade
                   </h3>
-                  <p className="text-sm text-winery-cream/60 leading-relaxed font-light mb-8">
+                  <p className="text-sm text-winery-cream/60 leading-relaxed font-light mb-6 md:mb-8">
                     Localizado na Senhora do Desterro, um testemunho histórico
                     da engenharia e património industrial da nossa região.
                   </p>
@@ -440,12 +442,12 @@ const App: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
                 <div className="order-2 lg:order-1">
-                  <h3 className="text-3xl font-serif italic mb-6">
+                  <h3 className="text-2xl md:text-3xl font-serif italic mb-4 md:mb-6">
                     CISE - Serra da Estrela
                   </h3>
-                  <p className="text-sm text-winery-cream/60 leading-relaxed font-light mb-8">
+                  <p className="text-sm text-winery-cream/60 leading-relaxed font-light mb-6 md:mb-8">
                     O Centro de Interpretação da Serra da Estrela é uma
                     estrutura dedicada à educação ambiental e valorização do
                     património natural único da nossa serra.
@@ -469,15 +471,15 @@ const App: React.FC = () => {
   );
 
   const ContactPage = () => (
-    <div className="pt-48 pb-32 bg-winery-dark min-h-screen">
+    <div className="pt-28 md:pt-48 pb-20 md:pb-32 bg-winery-dark min-h-screen">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
             <div>
-              <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-6 block">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 md:mb-6 block">
                 Contactos
               </span>
-              <h1 className="text-6xl font-serif italic mb-10">
+              <h1 className="text-4xl md:text-6xl font-serif italic mb-8 md:mb-10">
                 Fale Connosco.
               </h1>
               <p className="text-winery-cream/60 italic mb-12">
@@ -652,13 +654,13 @@ const App: React.FC = () => {
   );
 
   const Testimonials = () => (
-    <section className="py-32 bg-winery-green border-t border-winery-gold/5">
+    <section className="py-20 md:py-32 bg-winery-green border-t border-winery-gold/5">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <span className="text-[10px] uppercase tracking-[0.5em] text-winery-gold mb-4 block">
             Experiências
           </span>
-          <h2 className="text-4xl font-serif italic">
+          <h2 className="text-3xl md:text-4xl font-serif italic">
             Relatos de quem nos visita
           </h2>
         </div>

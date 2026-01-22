@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${isScrolled ? "bg-winery-dark/95 border-b border-winery-gold/10 py-3 backdrop-blur-md" : "bg-transparent py-6"}`}
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${isScrolled ? "bg-winery-dark/95 border-b border-winery-gold/10 py-3 backdrop-blur-md" : "bg-transparent py-4 md:py-6"}`}
     >
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-4">
@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onNavigate("home")}
               className="flex items-center group"
             >
-              <div className="w-12 h-12 relative mr-4 flex items-center justify-center rounded-full overflow-hidden">
+              <div className="w-10 h-10 md:w-12 md:h-12 relative mr-3 md:mr-4 flex items-center justify-center rounded-full overflow-hidden">
                 <img
                   src={logo}
                   alt="Quinta da Bica Logo"
@@ -55,10 +55,10 @@ const Navbar: React.FC<NavbarProps> = ({
                 />
               </div>
               <div className="flex flex-col items-start">
-                <span className="text-lg md:text-xl font-serif italic tracking-widest text-winery-gold leading-none">
+                <span className="text-base md:text-xl font-serif italic tracking-widest text-winery-gold leading-none">
                   QUINTA DA BICA
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.3em] text-winery-cream/50 mt-1">
+                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-winery-cream/50 mt-1">
                   Região do Dão
                 </span>
               </div>
@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Right Top Icons */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4 md:space-x-6">
             <button
               onClick={() => onNavigate("login")}
               className="flex items-center space-x-2 text-[10px] uppercase tracking-widest text-winery-cream/60 hover:text-winery-gold transition-colors"
@@ -138,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               key={link.id}
               onClick={() => onNavigate(link.id)}
-              className={`text-[11px] uppercase tracking-[0.2em] whitespace-nowrap hover:text-winery-gold transition-colors ${currentPage === link.id ? "text-winery-gold font-medium" : "text-winery-cream/70"}`}
+              className={`text-[10px] md:text-[11px] uppercase tracking-[0.2em] whitespace-nowrap hover:text-winery-gold transition-colors ${currentPage === link.id ? "text-winery-gold font-medium" : "text-winery-cream/70"}`}
             >
               {link.name}
             </button>
